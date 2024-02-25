@@ -1,0 +1,50 @@
+#Author: Sean Voth
+#Date: 2/24/2024
+#
+#Description:
+#This Python script captures an image from the Windows clipboard,
+#checks if the image contains a QR code, decodes the QR code,
+#and then saves the decoded information into a text file located at C:\temp\decoded_qr_code.txt.
+#
+#Note:
+#- Make sure to have Python installed.
+#- Dependencies: [Pillow ; pyzbar].
+#    -- Pillow is a powerful Python Imaging Library fork. It is used in this script for image processing tasks, such as capturing screenshots and working with images.
+#        --- pip install pillow
+#    -- pyzbar is a Python wrapper for the ZBar barcode scanning library. It is used in this script to decode QR codes from images.
+#        --- pip install pyzbar
+
+
+
+from PIL import Image, ImageGrab
+from pyzbar.pyzbar import decode
+
+def capture_and_decode():
+    # Capture screenshot from clipboard as doing from a saved image was easy but it did make it a pain with more steps
+    #screenshot_path = "screenshot.png"
+    #screenshot = Image.open(C:\tmp)
+    screenshot = ImageGrab.grabclipboard()
+
+    if screenshot is None:
+        print("No image found in the clipboard.")
+        return
+
+    # Decode QR code
+    decoded_objects = decode(screenshot)
+
+    # Check if QR code is detected
+    if decoded_objects:
+        # Get the decoded information
+        decoded_info = decoded_objects[0].data.decode('utf-8')
+        print("Decoded QR code:", decoded_info)
+
+        # Saves the decoded information to a text file if needed, might just hash this out as i do like that i have it also
+        #prints the decoded in the term
+        with open("C:\\temp\\decoded_qr_code.txt", "w") as file:
+            file.write(decoded_info)
+        print("Decoded QR was saved to C:\\temp\\decoded_qr_code.txt")
+    else:
+        print("No QR code detected in the screenshot.")
+
+if __name__ == "__main__":
+    capture_and_decode()
