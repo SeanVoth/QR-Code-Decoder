@@ -11,26 +11,19 @@ This Python script captures an image from the Windows clipboard, checks if the i
 
 - <b>Python</b>
 
-! - this script relies on two external libraries as dependencies: Pillow and pyzbar.
+this script relies on two external libraries as dependencies: Pillow and pyzbar.
 
-Pillow:
+-Pillow:
+   Pillow is a powerful Python Imaging Library fork. It is used in this script for image processing tasks, such as capturing screenshots and working with images.
+   Install it using the following command:
+     pip install pillow
 
-Pillow is a powerful Python Imaging Library fork. It is used in this script for image processing tasks, such as capturing screenshots and working with images.
-Install it using the following command:
-bash
+-pyzbar:
+   pyzbar is a Python wrapper for the ZBar barcode scanning library. It is used in this script to decode QR codes from images.
+   Install it using the following command:
+       pip install pyzbar
 
-pip install pillow
-
-
-! -pyzbar:
-
-pyzbar is a Python wrapper for the ZBar barcode scanning library. It is used in this script to decode QR codes from images.
-Install it using the following command:
-bash
-
-pip install pyzbar
-
-@@ Ensure that you have both of these libraries installed before running the script. If you haven't installed them yet, you can use the provided pip install commands in your terminal or command prompt.
+Ensure that you have both of these libraries installed before running the script. If you haven't installed them yet, you can use the provided pip install commands in your terminal or command prompt.
 
 <h2>Environments Used </h2>
 
